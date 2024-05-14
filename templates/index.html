@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
@@ -19,20 +20,35 @@
     <div class="container">
       <h1>Image Caption Generation</h1>
       <form
-        method="POST"
-        action="/upload"
         enctype="multipart/form-data"
         id="uploadForm"
       >
-        <input type="file" name="image" accept="image/*" id="imageInput" />
+        <input type="file" name="image" id="imageInput" />
+        <p id="fileError" class="error hidden">Invalid file format. Please upload an image file (e.g., JPG, PNG, JPEG).
+        </p>
         <div id="hidden-div" class="hidden">
           <h2>Uploaded Image</h2>
           <img id="previewImage" src="#" alt="Uploaded Image"/>
-          <button class="btn" type="submit">Generate✨</button>
+          <button class="btn" type="button" onclick="generateCaption()">Generate✨</button>
         </div>
       </form>
-    </div>
+      <div id="output" class="output hidden">
+        <div class="heading-output">
+          <h5>Generated Caption</h5>
+          <img onclick="playSpeech()" id="sound-image" src="{{url_for('static', filename='images/assests/volume-removebg-preview.png')}}" alt="">
+          <!-- <span class="material-symbols-outlined" onclick="playSpeech()">
+            volume_up
+            </span> -->
+        </div>
+        <p id="generated-caption">
 
+        </p>
+      </div>
+    </div>
+  
+    <!-- <p id="generated-caption"></p><span class="material-symbols-outlined" onclick="playSpeech()">
+      volume_up
+      </span> -->
     <script src="{{url_for('static', filename="js/script.js")}}"></script>
   </body>
 </html>

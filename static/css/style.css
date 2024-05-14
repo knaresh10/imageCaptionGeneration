@@ -6,6 +6,9 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-image: url('../images/pexels-tara-winstead-8386440.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {
@@ -13,6 +16,7 @@ body {
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  color: white;
 }
 
 .container h1 {
@@ -24,7 +28,6 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-top: px; */
 }
 
 input[type="file"] {
@@ -38,20 +41,18 @@ input[type="file"]::file-selector-button {
   padding: 0 16px;
   height: 40px;
   cursor: pointer;
-  background-color: white;
+  background-color: #4287f5;
   border: 1px solid rgba(0, 0, 0, 0.16);
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
   margin-right: 16px;
- /* This is a hack to change the button label. I'm hiding the default label and then manually applying the width based on updated icon and label. */
   width: 132px;
   color: transparent;
- /* Firefox doesn't support the pseudo ::before or ::after elements on this input field so we need to use the @supports rule to enable default styles fallback for Firefox. */
 }
 input[type="file"]::file-selector-button:hover {
-  background-color: #f3f4f6;
+  background-color: #3683ff;
 }
 input[type="file"]::file-selector-button:active {
-  background-color: #e5e7eb;
+  background-color: #3683ff;
 }
 input[type="file"]::before {
   position: absolute;
@@ -98,7 +99,6 @@ input[type="file"]:focus-within::file-selector-button, input[type="file"]:focus:
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
 
 .btn{
-
 font-family: Lato;
 font-weight: 0;
 font-size: 14px;
@@ -116,13 +116,32 @@ align-items: center;
 cursor: pointer;
 }
 
-/* .btn:hover{
+.output {
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+}
 
-transition : 2909ms;
-padding: 10px 26px;
-transform : translateY(-0px);
-background: linear-gradient(90deg, #0066CC 0%, #c500cc 100%);
-color: #0066cc;
-border: none;
-} */
+#generated-caption {
+  color: white;
+}
 
+.heading-output {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.heading-output span {
+  cursor: pointer;
+}
+
+#fileError {
+  color: rgb(255, 0, 0);
+  font: bold;
+}
+
+#sound-image {
+  width: 40px;
+  height: 40px;
+}
