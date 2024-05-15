@@ -3,7 +3,7 @@ import numpy as np
 from keras.preprocessing import sequence
 from keras.preprocessing import image
 from IPython.display import Image, display
-from print_text import style_caption
+from bilstm1 import style_caption
 from keras.applications.inception_v3 import InceptionV3
 from tqdm import tqdm
 
@@ -46,10 +46,10 @@ t_model = load_model('./GPU_blstm_trial_model.h5')
 
 def predict_captions_2(image):
     start_word = ["<start>"]
+    e = encode(image) # this the output of cnn inceptionv3
     while True:
         par_caps = [word2idx[i] for i in start_word]
         par_caps = sequence.pad_sequences([par_caps], maxlen=max_len, padding='post')
-        e = encode(image) # this the output of cnn inceptionv3
         # print(image)
         # print(e)
         preds = t_model.predict([np.array([e]), np.array(par_caps)])
@@ -60,4 +60,7 @@ def predict_captions_2(image):
             break
 
     sentence = ' '.join(start_word[1:-1])
+    
+    #return sentence which contains the caption
+    #output is returned
     return sentence

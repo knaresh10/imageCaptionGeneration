@@ -1,3 +1,7 @@
+#region 
+from bilstm1 import style_caption
+#endregion
+#flask code
 import warnings
 warnings.filterwarnings("ignore")
 import os
@@ -6,9 +10,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from flask import Flask, render_template, request, jsonify
 import os
 from image_caption import predict_captions_2
-#region Hidden Code
-from print_text import style_caption
-#endregion
 from text_to_speech import text_to_speech
 app = Flask(__name__, static_url_path='/static')
 
@@ -22,8 +23,11 @@ def upload():
         image = request.files['image']
         image_path = os.path.join(app.root_path, 'static', 'images', image.filename)
         image.save(image_path)
-        caption = predict_captions_2(image_path)
+        caption = predict_captions_2(image_path) #output of the model
+        #region
         caption = style_caption(image_path, caption)
+        #endregion
+        #return caption
         return caption 
     return 'Error : No image uploaded'
 
